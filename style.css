@@ -1,0 +1,1083 @@
+:root {
+  --blue: #1A6BFF;          /* Main brand blue — used for logo, highlights, buttons */
+  --blue-dark: #1250CC;     /* Darker blue — used for button hover effects */
+  --blue-light: #EBF1FF;    /* Very light blue — used for soft backgrounds */
+  --black: #111111;         /* Main text color — almost black for readability */
+  --gray: #555555;          /* Secondary text — for paragraphs and descriptions */
+  --gray-light: #F5F5F5;    /* Light gray — used for section backgrounds */
+  --white: #FFFFFF;         /* Pure white — main background color */
+  --border: #E0E0E0;        /* Subtle border color for cards and dividers */
+
+  --font-main: 'Inter', sans-serif;    /* Main font used throughout the site */
+  --font-display: 'Poppins', sans-serif; /* Heading font — bolder and more distinct */
+
+  --radius: 12px;           /* Rounded corner size for cards and buttons */
+  --radius-lg: 20px;        /* Larger rounded corner for bigger elements */
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);  /* Soft shadow for cards */
+  --shadow-hover: 0 8px 30px rgba(26,107,255,0.15); /* Blue glow on hover */
+
+  --transition: 0.3s ease;  /* Smooth animation speed — used on hovers */
+
+  --max-width: 1200px;      /* Maximum page width — keeps content centered */
+  --section-padding: 80px 20px; /* Top/bottom spacing for each section */
+}
+
+
+*, *::before, *::after {
+  margin: 0;            /* Remove default spacing around elements */
+  padding: 0;           /* Remove default inner spacing */
+  box-sizing: border-box; /* Makes width calculations more predictable */
+}
+
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling when clicking anchor links */
+}
+
+body {
+  font-family: var(--font-main); /* Apply main font to entire page */
+  background-color: var(--white); /* White background for the whole site */
+  color: var(--black);            /* Default text color is near-black */
+  line-height: 1.6;               /* Comfortable line spacing for readability */
+  overflow-x: hidden;             /* Prevent horizontal scroll bar */
+}
+
+/* Remove underlines from all links */
+a {
+  text-decoration: none;
+  color: inherit; /* Links inherit the color of their parent element */
+}
+
+/* Remove bullet points from lists */
+ul {
+  list-style: none;
+}
+
+/* Make images flexible and never overflow their container */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
+
+
+
+/* Centers and limits the width of content */
+.container {
+  max-width: var(--max-width); /* Don't go wider than 1200px */
+  margin: 0 auto;              /* Center horizontally */
+  padding: 0 20px;             /* Add space on left and right edges */
+}
+
+/* Standard section spacing */
+.section {
+  padding: var(--section-padding); /* Add space above and below each section */
+}
+
+/* Light gray background sections */
+.section--gray {
+  background-color: var(--gray-light);
+}
+
+/* Light blue background sections */
+.section--blue {
+  background-color: var(--blue-light);
+}
+
+/* Section heading block — used at the top of most sections */
+.section-header {
+  text-align: center;    /* Center-align heading and subtitle */
+  margin-bottom: 50px;   /* Space below the heading before content */
+}
+
+/* Small label above section titles (e.g. "OUR SERVICES") */
+.section-eyebrow {
+  display: inline-block;          /* Sit beside other inline elements */
+  font-size: 0.75rem;             /* Small text size */
+  font-weight: 600;               /* Semi-bold */
+  letter-spacing: 0.15em;        /* Wider letter spacing for label look */
+  text-transform: uppercase;      /* ALL CAPS */
+  color: var(--blue);             /* Blue label color */
+  margin-bottom: 10px;            /* Space below the label */
+}
+
+/* Main section heading style */
+.section-title {
+  font-family: var(--font-display); /* Use Poppins heading font */
+  font-size: clamp(1.8rem, 3vw, 2.5rem); /* Responsive font size */
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+/* Subtitle paragraph under section heading */
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray);        /* Gray text for secondary info */
+  max-width: 560px;          /* Limit width for readable line length */
+  margin: 0 auto;            /* Center the paragraph */
+}
+
+/* Highlight important words in blue */
+.text-blue {
+  color: var(--blue);
+}
+
+
+
+/* Base button style (shared by both) */
+.btn {
+  display: inline-flex;         /* Allow icon + text side by side */
+  align-items: center;
+  gap: 8px;                     /* Space between icon and text */
+  padding: 14px 30px;           /* Inner spacing */
+  border-radius: 50px;          /* Pill shape */
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid transparent; /* Placeholder border (overridden below) */
+  cursor: pointer;               /* Show hand cursor on hover */
+  transition: all var(--transition); /* Smooth all changes */
+  white-space: nowrap;           /* Don't wrap button text to next line */
+}
+
+/* PRIMARY button — solid blue fill */
+.btn-primary {
+  background-color: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+/* Hover effect: darken the blue */
+.btn-primary:hover {
+  background-color: var(--blue-dark);
+  border-color: var(--blue-dark);
+  transform: translateY(-2px);       /* Slight upward float on hover */
+  box-shadow: var(--shadow-hover);   /* Blue glow shadow */
+}
+
+/* SECONDARY button — white with blue border */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* Hover effect: fill with blue */
+.btn-secondary:hover {
+  background-color: var(--blue);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+
+
+.header {
+  position: fixed;              /* Stick to top of screen always */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;                /* Stay above all other elements */
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+
+/* Shadow added by JavaScript when user scrolls */
+.header.scrolled {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+/* Inner flex container: logo left, nav right */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Push logo and links to opposite sides */
+  height: 70px;                   /* Header height */
+  padding: 0 20px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* LOGO — clickable site title */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blue);              /* Logo is always blue */
+  letter-spacing: -0.5px;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;                       /* Space between nav links */
+}
+
+/* Individual nav link style */
+.nav-links a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--black);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all var(--transition);
+}
+
+/* Hover and active state for nav links */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--blue);
+  background-color: var(--blue-light);
+}
+
+/* The "Contact Us" button in the nav bar */
+.nav-cta {
+  background-color: var(--blue);
+  color: var(--white) !important;  /* Override the default link color */
+  border-radius: 50px !important;
+  padding: 10px 22px !important;
+}
+
+.nav-cta:hover {
+  background-color: var(--blue-dark) !important;
+  color: var(--white) !important;
+}
+
+/* Mobile menu hamburger icon (hidden on desktop) */
+.nav-toggle {
+  display: none;                   /* Hidden on large screens */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+/* Each line of the hamburger icon */
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--black);
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+
+
+
+.hero {
+  padding-top: 130px;           /* Push down below fixed header (70px + extra) */
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #EBF1FF 100%); /* Subtle gradient */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Two-column layout: text left, image right */
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  align-items: center;
+  gap: 60px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Small tag above the main hero heading */
+.hero-tag {
+  display: inline-block;
+  background-color: var(--blue-light);
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* Main hero heading */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.5rem); /* Responsive — scales with screen size */
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+
+/* Paragraph text under hero heading */
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.75;
+  margin-bottom: 35px;
+  max-width: 480px;
+}
+
+/* Container for hero buttons */
+.hero-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Stack on small screens */
+}
+
+/* Hero illustration/image on the right side */
+.hero-image {
+  position: relative;
+}
+
+/* The actual image element */
+.hero-image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  animation: float 4s ease-in-out infinite; /* Gentle floating animation */
+}
+
+/* Floating animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }    /* Start and end at normal position */
+  50%       { transform: translateY(-15px); }  /* Float up 15px at midpoint */
+}
+
+/* Small decorative badge floating over the hero image */
+.hero-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  animation: float 4s ease-in-out infinite 1s; /* Slight delay so it floats offset */
+}
+
+/* Colored dot inside the badge */
+.hero-badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;             /* Make it a circle */
+  background-color: var(--blue);
+}
+
+
+
+.stats-bar {
+  background-color: var(--blue);  /* Full blue background */
+  padding: 40px 20px;
+}
+
+/* Center and arrange stats in a row */
+.stats-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around; /* Equal spacing between stats */
+  flex-wrap: wrap;               /* Wrap to next line on small screens */
+  gap: 30px;
+}
+
+/* Individual stat item */
+.stat-item {
+  text-align: center;
+  color: var(--white);
+}
+
+/* The big number */
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  display: block;
+}
+
+/* The label below the number */
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.85;          /* Slightly transparent for visual hierarchy */
+}
+
+
+
+/* Grid layout for cards — 4 per row on desktop */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 24px;
+}
+
+/* Individual card */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  padding: 30px 24px;
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect: lift and blue glow */
+.card:hover {
+  transform: translateY(-6px);       /* Card lifts up */
+  box-shadow: var(--shadow-hover);   /* Blue glow appears */
+  border-color: var(--blue);         /* Border turns blue */
+}
+
+/* Icon inside a card */
+.card-icon {
+  width: 54px;
+  height: 54px;
+  background-color: var(--blue-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;      /* Emoji icon size */
+  margin-bottom: 20px;
+  transition: all var(--transition);
+}
+
+/* Icon background turns blue on card hover */
+.card:hover .card-icon {
+  background-color: var(--blue);
+}
+
+/* Card heading */
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+/* Card description text */
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* "Know More" link on cards */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--blue);
+  transition: gap var(--transition);
+}
+
+/* Arrow moves right on hover */
+.card-link:hover {
+  gap: 10px;
+}
+
+
+
+/* Two-column layout for promo banners */
+.promo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 30px;
+}
+
+/* Individual promo banner card */
+.promo-card {
+  border-radius: var(--radius-lg);
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition);
+}
+
+/* Lift effect on hover */
+.promo-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Service promo: blue gradient background */
+.promo-card--service {
+  background: linear-gradient(135deg, var(--blue) 0%, #4A90FF 100%);
+  color: var(--white);
+}
+
+/* Job promo: dark background */
+.promo-card--job {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: var(--white);
+}
+
+/* Text inside promo banners */
+.promo-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.promo-card p {
+  opacity: 0.9;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Button inside promo card — white version */
+.btn-white {
+  background-color: var(--white);
+  color: var(--blue);
+  border: 2px solid var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  align-self: flex-start; /* Don't stretch button full width */
+}
+
+.btn-white:hover {
+  background-color: transparent;
+  color: var(--white);
+}
+
+/* Decorative shape in promo card background */
+.promo-card::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08); /* Very faint circle */
+  bottom: -60px;
+  right: -60px;
+}
+
+
+
+/* Two-column layout: image left, feature list right */
+.features-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 70px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Left image side */
+.features-image img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* Individual feature item (icon + text) */
+.feature-item {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+/* Feature icon circle */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;                 /* Don't shrink */
+  background-color: var(--blue-light);
+  border-radius: 50%;              /* Perfect circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.feature-item h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.feature-item p {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+
+
+/* Two-column: form left, info right */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Styling for form labels */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--black);
+}
+
+/* Input fields and textareas */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  color: var(--black);
+  background: var(--white);
+  transition: border-color var(--transition);
+  outline: none;
+}
+
+/* Blue border when user clicks into a field */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--blue);
+}
+
+/* Textarea specific height */
+.form-group textarea {
+  height: 130px;
+  resize: vertical;    /* User can resize vertically only */
+}
+
+/* Info box on the right of the contact section */
+.contact-info {
+  padding: 40px;
+  background-color: var(--blue);
+  border-radius: var(--radius-lg);
+  color: var(--white);
+}
+
+.contact-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  opacity: 0.9;
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+}
+
+/* Individual contact info item (icon + text) */
+.info-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.info-icon {
+  font-size: 1.3rem;
+  margin-top: 2px;
+}
+
+.info-item strong {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-bottom: 2px;
+}
+
+.info-item span {
+  font-size: 0.95rem;
+}
+
+
+
+.appt-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 50px;
+  box-shadow: var(--shadow);
+}
+
+
+
+/* Four-column grid for steps */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+/* Individual step card */
+.step-card {
+  text-align: center;
+  padding: 36px 24px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+/* Step number badge at top of card */
+.step-number {
+  width: 48px;
+  height: 48px;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 auto 20px;
+  font-family: var(--font-display);
+}
+
+.step-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+
+
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Map iframe styling */
+.map-wrapper {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 380px;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+
+.footer {
+  background-color: #0D0D0D;   /* Very dark, almost black */
+  color: #AAAAAA;              /* Light gray text on dark background */
+  padding: 70px 20px 30px;
+}
+
+/* Four-column footer grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* Brand column wider */
+  gap: 40px;
+  max-width: var(--max-width);
+  margin: 0 auto 50px;
+}
+
+/* Footer brand/logo column */
+.footer-brand .footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--blue);
+  margin-bottom: 15px;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 260px;
+}
+
+/* Footer column heading */
+.footer-col h4 {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Footer links */
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #AAAAAA;
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+
+.footer-col ul li a:hover {
+  color: var(--blue);      /* Links turn blue on hover */
+}
+
+/* Horizontal divider line above copyright */
+.footer-bottom {
+  border-top: 1px solid #222222;
+  padding-top: 25px;
+  text-align: center;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+
+
+.page-hero {
+  padding-top: 130px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: linear-gradient(135deg, var(--blue-light) 0%, #FFFFFF 100%);
+}
+
+.page-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.page-hero p {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+.page-hero-image img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  animation: float 4s ease-in-out infinite;
+}
+
+
+
+/* Initial hidden state (before element comes into view) */
+.animate-on-scroll {
+  opacity: 0;                          /* Invisible */
+  transform: translateY(30px);         /* Shifted 30px down */
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Visible state (when element enters the viewport) */
+.animate-on-scroll.visible {
+  opacity: 1;                          /* Fully visible */
+  transform: translateY(0);            /* Back to normal position */
+}
+
+/* Stagger delays so elements appear one after another */
+.animate-on-scroll:nth-child(1) { transition-delay: 0.05s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.15s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.25s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.35s; }
+
+
+
+@media (max-width: 1024px) {
+  /* 3 cards per row on medium screens */
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack hero to single column on mobile */
+  .hero-inner,
+  .page-hero-inner,
+  .features-inner,
+  .contact-inner,
+  .contact-page-grid,
+  .promo-grid,
+  .footer-grid {
+    grid-template-columns: 1fr; /* Single column */
+  }
+
+  /* Reverse order: image above text on mobile */
+  .hero-image {
+    order: -1;
+  }
+
+  /* 2 cards per row on tablet */
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hide nav links on mobile */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+
+  /* Show nav links when menu is open (toggled by JS) */
+  .nav-links.open {
+    display: flex;
+  }
+
+  /* Show hamburger menu icon on mobile */
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Full width buttons on mobile */
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  /* Reduce section padding on mobile */
+  .section {
+    padding: 50px 20px;
+  }
+
+  /* Stack footer columns */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appt-inner {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* 1 card per row on very small screens */
+  .cards-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+}
+
+.whatsapp-float img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.social-btn {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: rgba(18, 80, 204, 0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--coral);
+    transform: translateY(-3px);
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
